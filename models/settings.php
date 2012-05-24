@@ -29,6 +29,8 @@
 	//False = instant activation
 	//If this variable is falses the resend-activation file not work.
 	$emailActivation = true;
+	$notifyOnRegister = true;
+	$notifyEmail = "seth@sqorecard.com";
 
 	//In hours, how long before UserCake will allow a user to request another account activation email
 	//Set to 0 to remove threshold

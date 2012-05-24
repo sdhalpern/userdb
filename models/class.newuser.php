@@ -48,7 +48,7 @@ class User
 	
 	public function userCakeAddUser()
 	{
-		global $db,$emailActivation,$websiteUrl,$db_table_prefix;
+		global $db,$emailActivation,$websiteUrl,$db_table_prefix,$notifyOnRegister,$notifyEmail;
 	
 		//Prevent this function being called if there were construction errors
 		if($this->status)
@@ -60,6 +60,23 @@ class User
 			$this->activation_token = generateActivationToken();
 	
 			//Do we need to send out an activation email?
+			if($notifyOnRegister)
+			{
+			$mail = new userCakeMail();
+			$hooks = array("searchStrs" => array("#USERNAME#"),"subjectStrs" => array($this->unclean_username));
+			if(!$mail->newTemplateMsg("register-notify.txt",$hooks))
+			{
+			$this->mail_failure = true;
+			}
+			else
+			{
+			if(!$mail->sendMail($notifyEmail,"New User Registration"))
+			{
+			$this->mail_failure = true;
+			}
+			}
+			}
+				
 			if($emailActivation)
 			{
 				//User must activate their account first
