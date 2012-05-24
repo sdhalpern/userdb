@@ -1,0 +1,5 @@
+Hello!
+
+The following user has just registered: #USERNAME#
+
+#INC-FOOTER#
