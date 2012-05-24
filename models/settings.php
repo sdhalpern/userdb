@@ -12,8 +12,8 @@
 	//Database Information
 	$dbtype = "mysql"; 
 	$db_host = "localhost";
-	$db_user = "root";
-	$db_pass = "element";
+	$db_user = "dev";
+	$db_pass = "test";
 	$db_name = "alphadb";
 	$db_port = "3306";
 	$db_table_prefix = "userCake_";
